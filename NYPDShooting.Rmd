@@ -1,0 +1,39 @@
+---
+title: "NYPD Shooting Data Analysis"
+author: "RT"
+date: "2023-04-01"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Importing Data
+
+ I stated importing the NYPD Shooting data from <https://catalog.data.gov/dataset/nypd-shooting-incident-data-historic>. So I created a "url" variable to read the data the website has.
+
+```{r get_data}
+## Get current Data in the "download" button of the website
+url_2 <- "https://data.cityofnewyork.us/api/views/833y-fsy8/rows.csv?accessType=DOWNLOAD"
+```
+Let's read in the data and see what we have.
+
+```{r import_data}
+data_shooting <- read.csv(url_2)
+```
+After looking at the data_shooting, I would like to tidy the data set and remove the columns that I am not interested and rename other.
+Also, I would like to see the range of date in my data set to start my analysis.
+```{r tidy_data_shooting}
+```
+data_shooting <- data_shooting %>% select(-c(INCIDENT_KEY,OCCUR_TIME,JURISDICTION_CODE,LOCATION_DESC,STATISTICAL_MURDER_FLAG,PERP_AGE_GROUP,PERP_SEX,PERP_RACE,X_COORD_CD,Y_COORD_CD,Latitude,Longitude,Lon_Lat)) %>% rename(CITY = BORO, CITY AREA = PRECINCT)
+
+## Including Plots
+
+You can also embed plots, for example:
+
+```{r pressure, echo=FALSE}
+plot(pressure)
+```
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
